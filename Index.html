@@ -1,1 +1,498 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Ideal Sweets & Bakers | Sahiwal</title>
+<meta name="description" content="Order delicious cakes, pizza, burgers, pasta, sweets and bakery items from Super Ideal Sweets & Bakers, Sahiwal.">
+<style>
+:root{
+  --wine:#761c2b;
+  --dark:#32131a;
+  --gold:#f4c66a;
+  --cream:#fffaf2;
+  --muted:#76676a;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:Arial,Helvetica,sans-serif;
+  color:#302125;background:var(--cream)
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.topbar{
+  background:var(--dark);color:#fff;text-align:center;
+  padding:10px;font-size:13px;line-height:1.5
+}
+.topbar b{color:var(--gold)}
+header{
+  background:white;position:sticky;top:0;z-index:10;
+  box-shadow:0 3px 16px #32131a12
+}
+.nav{
+  max-width:1200px;margin:auto;padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:15px
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logoicon{
+  width:48px;height:48px;border-radius:50%;
+  display:grid;place-items:center;background:var(--wine);
+  color:var(--gold);font-size:25px
+}
+.logo strong{display:block;color:var(--wine);font-size:17px}
+.logo small{color:var(--muted);font-size:11px}
+.navlinks{display:flex;align-items:center;gap:19px;font-size:14px}
+.navlinks a:hover{color:var(--wine)}
+.cartbtn,.primary{
+  background:var(--wine);color:white;border:0;border-radius:9px;
+  padding:12px 16px;font-weight:bold
+}
+.cartbtn span{background:var(--gold);color:var(--dark);
+  border-radius:20px;padding:3px 7px;margin-left:5px}
+.hero{
+  background:linear-gradient(90deg,#2d1018ef,#3b1118b5),
+  url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1800&q=85') center/cover;
+  color:white;min-height:420px;display:flex;align-items:center
+}
+.heroinner{max-width:1200px;width:100%;margin:auto;padding:60px 24px}
+.eyebrow{color:var(--gold);font-weight:bold;letter-spacing:2px;font-size:12px}
+h1{font-size:clamp(35px,6vw,60px);max-width:650px;line-height:1.08;margin:14px 0}
+.hero p{max-width:520px;line-height:1.8;color:#f6e8e9}
+.hero .primary{display:inline-block;margin-top:14px;background:var(--gold);color:var(--dark)}
+.benefits{
+  max-width:1100px;margin:-25px auto 0;position:relative;
+  background:#fff;border-radius:15px;padding:20px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:15px;
+  box-shadow:0 10px 30px #32131a12
+}
+.benefit{text-align:center;font-size:13px;line-height:1.6}
+.benefit strong{display:block;color:var(--wine);font-size:15px}
+section{scroll-margin-top:90px}
+.section{max-width:1200px;margin:auto;padding:55px 20px}
+.heading{text-align:center;margin-bottom:28px}
+.heading h2{font-size:30px;color:var(--dark);margin:0 0 9px}
+.heading p{color:var(--muted);margin:0;line-height:1.6}
+.categories{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:25px}
+.chip{
+  border:1px solid #e4d5d3;background:#fff;color:var(--dark);
+  border-radius:25px;padding:10px 17px
+}
+.chip.active,.chip:hover{background:var(--wine);color:#fff;border-color:var(--wine)}
+.tools{display:flex;gap:12px;margin-bottom:24px}
+.tools input,.tools select,.field input,.field textarea,.field select{
+  width:100%;padding:12px;border:1px solid #e5d9d7;
+  border-radius:9px;background:white;outline-color:var(--wine)
+}
+.tools select{max-width:190px}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.product{
+  background:#fff;border:1px solid #f0e5e1;border-radius:14px;
+  overflow:hidden;transition:.2s;display:flex;flex-direction:column
+}
+.product:hover{transform:translateY(-4px);box-shadow:0 10px 25px #32131a10}
+.product img{width:100%;height:185px;object-fit:cover;background:#f3e8e5}
+.pbody{padding:15px;display:flex;flex-direction:column;flex:1}
+.tag{font-size:11px;color:var(--wine);font-weight:bold;text-transform:uppercase}
+.pbody h3{font-size:16px;margin:8px 0;line-height:1.35}
+.desc{font-size:12px;color:var(--muted);line-height:1.5;flex:1}
+.price{font-size:19px;color:var(--wine);font-weight:bold;margin:12px 0}
+.add{width:100%;background:var(--wine);color:white;border:0;padding:11px;border-radius:8px;font-weight:bold}
+.add:hover,.primary:hover,.cartbtn:hover{filter:brightness(1.1)}
+.noresults{grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)}
+.delivery{
+  background:#fff0cc;border:1px solid #f3d68f;color:#4c3414;
+  border-radius:12px;padding:18px;text-align:center;margin-top:28px;line-height:1.7
+}
+.delivery strong{color:var(--wine)}
+.aboutgrid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.aboutgrid img{width:100%;height:330px;object-fit:cover;border-radius:16px}
+.aboutgrid h2{font-size:32px;color:var(--dark)}
+.aboutgrid p{line-height:1.9;color:var(--muted)}
+.info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.info{
+  background:white;border:1px solid #f0e5e1;border-radius:13px;
+  padding:22px;text-align:center
+}
+.info .emoji{font-size:30px}
+.info h3{color:var(--wine)}
+.info p{font-size:13px;line-height:1.7;color:var(--muted)}
+footer{background:var(--dark);color:#fff;padding:35px 20px;text-align:center}
+footer p{font-size:13px;color:#e3d1d3;line-height:1.7}
+.footerlinks{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;font-size:13px}
+.overlay{
+  display:none;position:fixed;inset:0;background:#16070bb8;z-index:30;
+  align-items:center;justify-content:center;padding:15px
+}
+.overlay.open{display:flex}
+.modal{
+  background:var(--cream);border-radius:16px;padding:22px;
+  width:min(600px,100%);max-height:90vh;overflow:auto
+}
+.modalhead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.modalhead h2{color:var(--wine);margin:0}
+.close{border:0;background:#eee;border-radius:8px;padding:8px 12px}
+.cartitems{margin:18px 0}
+.cartitem{
+  display:grid;grid-template-columns:1fr auto;gap:10px;
+  padding:13px 0;border-bottom:1px solid #eadbd7
+}
+.cartitem small{display:block;color:var(--muted);margin-top:5px}
+.qty{display:flex;align-items:center;gap:9px;margin-top:8px}
+.qty button{border:1px solid #ddd;background:white;border-radius:5px;padding:4px 10px}
+.remove{border:0;background:none;color:#a32332;font-size:12px;margin-top:6px}
+.summary{background:white;border-radius:10px;padding:14px;margin:15px 0}
+.sumrow{display:flex;justify-content:space-between;gap:10px;margin:9px 0;font-size:14px}
+.sumrow.total{border-top:1px solid #eee;padding-top:12px;font-size:19px;font-weight:bold;color:var(--wine)}
+.field{margin:12px 0}
+.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}
+.field textarea{min-height:75px;resize:vertical}
+.field small{color:var(--muted)}
+.checkoutbtn{width:100%;margin-top:8px}
+.notice{font-size:12px;color:var(--muted);line-height:1.6}
+.floating{
+  position:fixed;bottom:18px;right:18px;z-index:15;
+  border:0;border-radius:50px;background:var(--wine);color:white;
+  padding:14px 18px;box-shadow:0 5px 20px #32131a35;font-weight:bold
+}
+@media(max-width:900px){
+ .products{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .navlinks{gap:10px}
+}
+@media(max-width:650px){
+ .nav{flex-wrap:wrap;padding:12px}
+ .navlinks{order:3;width:100%;justify-content:center;flex-wrap:wrap;font-size:12px}
+ .logo strong{font-size:15px}
+ .logoicon{width:40px;height:40px}
+ .hero{min-height:370px}
+ .heroinner{padding:45px 20px}
+ .benefits{margin:0;border-radius:0;grid-template-columns:1fr;padding:18px}
+ .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+ .product img{height:135px}
+ .pbody{padding:11px}
+ .pbody h3{font-size:14px}
+ .price{font-size:16px}
+ .section{padding:40px 13px}
+ .heading h2{font-size:25px}
+ .aboutgrid{grid-template-columns:1fr}
+ .aboutgrid img{height:230px}
+ .info-cards{grid-template-columns:1fr}
+ .tools{flex-direction:column}
+ .tools select{max-width:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  🎉 <b>FREE DELIVERY</b> on orders of Rs. 2,500 or more!
+  &nbsp; | &nbsp; Below Rs. 2,500: Rs. 60 delivery charges
+</div>
+
+<header>
+  <nav class="nav">
+    <a href="#home" class="logo">
+      <div class="logoicon">🥐</div>
+      <div><strong>SUPER IDEAL</strong><small>SWEETS & BAKERS · SAHIWAL</small></div>
+    </a>
+    <div class="navlinks">
+      <a href="#home">Home</a>
+      <a href="#menu">Our Menu</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="cartbtn" onclick="openCart()">🛒 Cart <span id="cartCount">0</span></button>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="heroinner">
+    <div class="eyebrow">FRESHLY MADE · FULL OF FLAVOUR</div>
+    <h1>A Little Sweetness, A Lot of Happiness.</h1>
+    <p>Explore delicious cakes, bakery treats, pizza, burgers, pasta and traditional sweets. Choose your favourites and order with ease.</p>
+    <a class="primary" href="#menu">Explore Our Menu →</a>
+  </div>
+</section>
+
+<div class="benefits">
+  <div class="benefit">🍰<strong>Sweet Treats</strong>Cakes, mithai and desserts</div>
+  <div class="benefit">🍕<strong>Fresh & Tasty</strong>Food for every craving</div>
+  <div class="benefit">🛵<strong>Delivery Offer</strong>Free delivery from Rs. 2,500</div>
+</div>
+
+<section class="section" id="menu">
+  <div class="heading">
+    <h2>Explore Our Menu</h2>
+    <p>Find your favourite treats and add them to your cart.</p>
+  </div>
+
+  <div class="categories" id="categories">
+    <button class="chip active" data-cat="All">All Items</button>
+    <button class="chip" data-cat="Pizza">🍕 Pizza</button>
+    <button class="chip" data-cat="Burgers">🍔 Burgers</button>
+    <button class="chip" data-cat="Pasta">🍝 Pasta</button>
+    <button class="chip" data-cat="Cakes">🎂 Cakes</button>
+    <button class="chip" data-cat="Sweets">🍬 Sweets</button>
+    <button class="chip" data-cat="Bakery">🥐 Bakery</button>
+    <button class="chip" data-cat="Biscuits">🍪 Biscuits</button>
+  </div>
+
+  <div class="tools">
+    <input id="search" type="search" placeholder="🔎 Search pizza, cake, burger..." aria-label="Search menu">
+    <select id="sort" aria-label="Sort products">
+      <option value="default">Sort: Recommended</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+      <option value="az">Name: A to Z</option>
+    </select>
+  </div>
+
+  <div class="products" id="products"></div>
+
+  <div class="delivery">
+    🚚 <strong>Special Delivery Offer!</strong><br>
+    Order below Rs. 2,500: delivery charges Rs. 60.<br>
+    Order Rs. 2,500 or more: <strong>FREE DELIVERY!</strong>
+  </div>
+  <p class="notice">Note: Menu items, pictures and prices shown here are sample listings for website setup. Confirm the actual menu and prices with the shop before publishing.</p>
+</section>
+
+<section class="section" id="about" style="background:#fff">
+  <div class="aboutgrid">
+    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1000&q=85" alt="Fresh bakery pastries" loading="lazy">
+    <div>
+      <div class="eyebrow">A TASTE TO REMEMBER</div>
+      <h2>Welcome to Super Ideal Sweets & Bakers</h2>
+      <p>Your neighbourhood stop for sweet cravings, bakery favourites and tasty food. From celebrations to everyday treats, explore our menu and select what you love.</p>
+      <p>Serving customers in Sahiwal. Please confirm delivery availability for your area when placing an order.</p>
+      <a href="#menu" class="primary" style="display:inline-block">Order Your Favourites</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="heading">
+    <h2>We're Here for You</h2>
+    <p>Need help with your order? Contact the shop using its confirmed details.</p>
+  </div>
+  <div class="info-cards">
+    <div class="info"><div class="emoji">📍</div><h3>Our Location</h3><p>Super Ideal Sweets & Bakers<br>Sahiwal, Punjab, Pakistan<br>Confirm the exact branch address before visiting.</p></div>
+    <div class="info"><div class="emoji">🛵</div><h3>Delivery</h3><p>Delivery charges Rs. 60 for orders below Rs. 2,500. Free delivery for orders of Rs. 2,500 or more.</p></div>
+    <div class="info"><div class="emoji">💬</div><h3>Order Support</h3><p>Place your order using WhatsApp. Add the shop's correct WhatsApp number in the website settings below.</p></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="logo" style="justify-content:center">
+    <div class="logoicon">🥐</div>
+    <div style="text-align:left"><strong style="color:#f4c66a">SUPER IDEAL</strong><small style="display:block;color:#ead5d7">SWEETS & BAKERS</small></div>
+  </div>
+  <p>Delicious moments start here. Thank you for visiting!</p>
+  <div class="footerlinks"><a href="#home">Home</a><a href="#menu">Menu</a><a href="#about">About Us</a><a href="#contact">Contact</a></div>
+  <p>© <span id="year"></span> Super Ideal Sweets & Bakers. All rights reserved.</p>
+</footer>
+
+<button class="floating" onclick="openCart()">🛒 View Cart (<span id="floatCount">0</span>)</button>
+
+<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()">
+  <div class="modal">
+    <div class="modalhead">
+      <h2>Your Shopping Cart</h2>
+      <button class="close" onclick="closeCart()">✕</button>
+    </div>
+    <div id="cartItems" class="cartitems"></div>
+    <div class="summary">
+      <div class="sumrow"><span>Subtotal</span><strong id="subtotal">Rs. 0</strong></div>
+      <div class="sumrow"><span>Delivery</span><strong id="delivery">Rs. 0</strong></div>
+      <div class="sumrow total"><span>Total</span><strong id="grandTotal">Rs. 0</strong></div>
+      <p class="notice" id="deliveryMessage">Add items to see delivery charges.</p>
+    </div>
+
+    <form id="checkoutForm">
+      <h3>Delivery Details</h3>
+      <div class="field"><label for="customerName">Full Name *</label><input id="customerName" required maxlength="100" placeholder="Enter your name"></div>
+      <div class="field"><label for="customerPhone">Mobile Number *</label><input id="customerPhone" required type="tel" maxlength="20" placeholder="03XXXXXXXXX"></div>
+      <div class="field"><label for="customerAddress">Complete Address *</label><textarea id="customerAddress" required maxlength="500" placeholder="House, street, area and city"></textarea></div>
+      <div class="field"><label for="customerNote">Order Note (optional)</label><textarea id="customerNote" maxlength="300" placeholder="Any special instructions?"></textarea></div>
+      <button class="primary checkoutbtn" type="submit">Send Order on WhatsApp</button>
+      <p class="notice">Your WhatsApp app will open with your order details. You must press Send in WhatsApp to submit the order to the shop. This website does not take online payments.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+// ===== WEBSITE SETTINGS =====
+// Replace this with the shop owner's confirmed WhatsApp number.
+// Use country code 92, without +, spaces or dashes.
+// Example format: 923001234567
+const SHOP_WHATSAPP = "92XXXXXXXXXX";
+
+// Sample menu: confirm the real prices and availability with the shop.
+const menu = [
+ {id:1,name:"Chicken Tikka Pizza",cat:"Pizza",price:650,desc:"Tikka-style pizza with cheese.",img:"https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=80"},
+ {id:2,name:"Chicken Fajita Pizza",cat:"Pizza",price:700,desc:"Chicken, vegetables and melted cheese.",img:"https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=700&q=80"},
+ {id:3,name:"Pepperoni Pizza",cat:"Pizza",price:750,desc:"A cheesy pizza favourite.",img:"https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=700&q=80"},
+ {id:4,name:"Classic Chicken Burger",cat:"Burgers",price:350,desc:"Crispy chicken with fresh toppings.",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"},
+ {id:5,name:"Zinger Burger",cat:"Burgers",price:400,desc:"Crunchy chicken burger.",img:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=700&q=80"},
+ {id:6,name:"Beef Burger",cat:"Burgers",price:450,desc:"Juicy burger with delicious toppings.",img:"https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=80"},
+ {id:7,name:"Creamy Alfredo Pasta",cat:"Pasta",price:500,desc:"Creamy sauce and pasta.",img:"https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80"},
+ {id:8,name:"Chicken Pasta",cat:"Pasta",price:550,desc:"Pasta with chicken and sauce.",img:"https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&w=700&q=80"},
+ {id:9,name:"Chocolate Cake",cat:"Cakes",price:1200,desc:"Chocolate cake for special moments.",img:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80"},
+ {id:10,name:"Birthday Cake",cat:"Cakes",price:1500,desc:"Celebration cake. Confirm design first.",img:"https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=700&q=80"},
+ {id:11,name:"Cupcakes",cat:"Cakes",price:250,desc:"Sweet individual cake treats.",img:"https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=700&q=80"},
+ {id:12,name:"Gulab Jamun",cat:"Sweets",price:290,desc:"Traditional sweet. Sample 250g price.",img:"https://images.unsplash.com/photo-1666190092159-8c8b8b2f2f83?auto=format&fit=crop&w=700&q=80"},
+ {id:13,name:"Barfi",cat:"Sweets",price:320,desc:"Traditional mithai. Sample price.",img:"https://images.unsplash.com/photo-1605197161470-5d2e3e3f5f4b?auto=format&fit=crop&w=700&q=80"},
+ {id:14,name:"Fresh Pastries",cat:"Bakery",price:180,desc:"A sweet bakery treat.",img:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80"},
+ {id:15,name:"Chicken Bread",cat:"Bakery",price:220,desc:"Savoury chicken-filled bakery item.",img:"https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=700&q=80"},
+ {id:16,name:"Baqar Khani",cat:"Bakery",price:275,desc:"Flaky traditional bakery treat.",img:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80"},
+ {id:17,name:"Mixed Biscuits",cat:"Biscuits",price:270,desc:"Assorted biscuits. Sample pack price.",img:"https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=700&q=80"},
+ {id:18,name:"Gol Rusk",cat:"Bakery",price:280,desc:"Crunchy rusk. Sample pack price.",img:"https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=700&q=80"}
+];
+
+let cart = {};
+let activeCategory = "All";
+const money = n => "Rs. " + Number(n).toLocaleString("en-PK");
+
+function renderProducts(){
+ const term = document.getElementById("search").value.trim().toLowerCase();
+ let items = menu.filter(p =>
+   (activeCategory==="All" || p.cat===activeCategory) &&
+   (p.name.toLowerCase().includes(term) || p.cat.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term))
+ );
+ const sort = document.getElementById("sort").value;
+ if(sort==="low") items.sort((a,b)=>a.price-b.price);
+ if(sort==="high") items.sort((a,b)=>b.price-a.price);
+ if(sort==="az") items.sort((a,b)=>a.name.localeCompare(b.name));
+
+ document.getElementById("products").innerHTML = items.length ? items.map(p=>`
+  <article class="product">
+    <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f7e8e4/761c2b?text=Super+Ideal'">
+    <div class="pbody">
+      <span class="tag">${p.cat}</span>
+      <h3>${p.name}</h3>
+      <div class="desc">${p.desc}</div>
+      <div class="price">${money(p.price)}</div>
+      <button class="add" onclick="addToCart(${p.id})">+ Add to Cart</button>
+    </div>
+  </article>`).join("") : '<div class="noresults">No items found. Try another search.</div>';
+}
+
+document.getElementById("categories").addEventListener("click",e=>{
+ const btn=e.target.closest("[data-cat]");
+ if(!btn)return;
+ activeCategory=btn.dataset.cat;
+ document.querySelectorAll(".chip").forEach(b=>b.classList.toggle("active",b===btn));
+ renderProducts();
+});
+document.getElementById("search").addEventListener("input",renderProducts);
+document.getElementById("sort").addEventListener("change",renderProducts);
+
+function addToCart(id){
+ cart[id]=(cart[id]||0)+1;
+ updateCart();
+}
+function changeQty(id,change){
+ cart[id]=(cart[id]||0)+change;
+ if(cart[id]<=0)delete cart[id];
+ updateCart();
+}
+function getSubtotal(){
+ return Object.entries(cart).reduce((sum,[id,qty])=>{
+  const p=menu.find(x=>x.id===Number(id));
+  return sum+(p?p.price*qty:0);
+ },0);
+}
+function getDelivery(subtotal){
+ return subtotal===0 || subtotal>=2500 ? 0 : 60;
+}
+function updateCart(){
+ const count=Object.values(cart).reduce((a,b)=>a+b,0);
+ document.getElementById("cartCount").textContent=count;
+ document.getElementById("floatCount").textContent=count;
+ const subtotal=getSubtotal(), delivery=getDelivery(subtotal), total=subtotal+delivery;
+ document.getElementById("subtotal").textContent=money(subtotal);
+ document.getElementById("delivery").textContent=subtotal===0?"Rs. 0":delivery===0?"FREE":money(delivery);
+ document.getElementById("grandTotal").textContent=money(total);
+
+ const entries=Object.entries(cart);
+ document.getElementById("cartItems").innerHTML=entries.length ? entries.map(([id,qty])=>{
+  const p=menu.find(x=>x.id===Number(id));
+  return `<div class="cartitem">
+    <div><strong>${p.name}</strong><small>${money(p.price)} each</small>
+    <div class="qty"><button type="button" onclick="changeQty(${p.id},-1)">−</button><span>${qty}</span><button type="button" onclick="changeQty(${p.id},1)">+</button></div>
+    <button type="button" class="remove" onclick="changeQty(${p.id},-${qty})">Remove</button></div>
+    <strong>${money(p.price*qty)}</strong>
+  </div>`;
+ }).join(""):'<p style="text-align:center;padding:20px;color:#76676a">Your cart is empty. Add something delicious!</p>';
+
+ const msg=document.getElementById("deliveryMessage");
+ if(subtotal===0)msg.textContent="Add items to see delivery charges.";
+ else if(subtotal>=2500)msg.textContent="🎉 Congratulations! Your order qualifies for FREE delivery.";
+ else msg.textContent="Add "+money(2500-subtotal)+" more to unlock FREE delivery!";
+}
+function openCart(){
+ document.getElementById("cartOverlay").classList.add("open");
+ document.body.style.overflow="hidden";
+ updateCart();
+}
+function closeCart(){
+ document.getElementById("cartOverlay").classList.remove("open");
+ document.body.style.overflow="";
+}
+
+document.getElementById("checkoutForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ const entries=Object.entries(cart);
+ if(!entries.length){alert("Please add items to your cart first.");return;}
+
+ if(!/^92\d{10}$/.test(SHOP_WHATSAPP)){
+  alert("Please add the shop's correct WhatsApp number in the HTML code first. Find SHOP_WHATSAPP near the top of the script.");
+  return;
+ }
+
+ const name=document.getElementById("customerName").value.trim();
+ const phone=document.getElementById("customerPhone").value.trim();
+ const address=document.getElementById("customerAddress").value.trim();
+ const note=document.getElementById("customerNote").value.trim();
+ if(!name||!phone||!address){alert("Please complete all required delivery details.");return;}
+
+ const subtotal=getSubtotal(),delivery=getDelivery(subtotal),total=subtotal+delivery;
+ let message="NEW ORDER - SUPER IDEAL SWEETS & BAKERS%0A";
+ let lines=[
+  "NEW ORDER - SUPER IDEAL SWEETS & BAKERS",
+  "------------------------------",
+  "Customer: "+name,
+  "Phone: "+phone,
+  "Address: "+address,
+  "",
+  "ORDER ITEMS:"
+ ];
+ entries.forEach(([id,qty])=>{
+  const p=menu.find(x=>x.id===Number(id));
+  lines.push(p.name+" x "+qty+" = "+money(p.price*qty));
+ });
+ lines.push(
+  "",
+  "Subtotal: "+money(subtotal),
+  "Delivery: "+(delivery===0?"FREE":money(delivery)),
+  "TOTAL: "+money(total),
+  "Note: "+(note||"None"),
+  "",
+  "Please confirm item availability and delivery."
+ );
+ const url="https://wa.me/"+SHOP_WHATSAPP+"?text="+encodeURIComponent(lines.join("\n"));
+ window.open(url,"_blank","noopener,noreferrer");
+});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+renderProducts();
+updateCart();
+</script>
+</body>
+</html>
+
